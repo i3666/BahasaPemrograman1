@@ -1,0 +1,95 @@
+
+package BahasaPemrograman;
+
+import java.io.*;
+
+public class Program2 {
+    
+    public static void main(String[] args) throws IOException {
+        
+        // membuat array
+        int pilihan, jumlahdata;
+        jumlahdata = 3;
+        int[] NilaiTugas = new int[3];
+        int[] NilaiUTS = new int[3];
+        int[] NilaiUAS = new int[3];
+        String[] NIM = new String[3];
+        String[] NamaMahasiswa = new String[3];
+        String[] NamaMatkul = new String[3];
+        
+        
+        // membuat scanner 
+        BufferedReader aub = new BufferedReader(new InputStreamReader(System.in));
+        
+        while (true) { 
+        System.out.println("=======================================");
+        System.out.println("      Program Penilaian Mahasiswa      ");
+        System.out.println("=======================================");
+        System.out.println("1. Input Data Mahasiswa                ");
+        System.out.println("2. Data Nilai Akhir dan Huruf Mahasiswa");
+        System.out.println("3. Keluar                              ");
+        System.out.print("Masukkan no. pilihan menu anda (1-3):    ");
+        pilihan = Integer.parseInt(aub.readLine());
+        
+        switch(pilihan) {
+            
+            case 1:
+                System.out.println("===============================");
+                System.out.println("   Input Data Nilai Mahasiswa  ");
+                System.out.println("===============================");
+                System.out.print("Masukkan Jumlah Mahasiswa: ");
+                jumlahdata = Integer.parseInt(aub.readLine());
+                for (int i = 0; i < jumlahdata; i++) {
+                    System.out.println((i+1) + ".");
+                    System.out.print("NIM     : ");
+                    NIM[i] = aub.readLine();
+                    System.out.print("Nama    : ");
+                    NamaMahasiswa[i] = aub.readLine();
+                    System.out.print("Nama MK : ");
+                    NamaMatkul[i] = aub.readLine();
+                    System.out.print("Tugas   : ");
+                    NilaiTugas[i] = Integer.parseInt(aub.readLine());
+                    System.out.print("UTS       : ");
+                    NilaiUTS[i] = Integer.parseInt(aub.readLine());
+                    System.out.print("UAS       : ");
+                    NilaiUAS[i] = Integer.parseInt(aub.readLine());
+                } break;
+            case 2:
+                System.out.println("=================================");
+                System.out.println("      Data Nilai Mahasiswa       ");
+                System.out.println("=================================");
+                System.out.println("2.                               ");
+                for ( int k = 0; k < jumlahdata; k++) {
+                    String Huruf;
+                    Double NilaiAkhir = (0.4 * NilaiTugas[k] + 0.3 * NilaiUTS[k] + 0.3 * NilaiUAS[k]);
+                    if ( NilaiAkhir >= 80) {
+                        Huruf = "A";
+                    } else if ( NilaiAkhir >= 75) {
+                        Huruf = "B+";
+                    } else if ( NilaiAkhir >= 65) {
+                        Huruf = "B";
+                    } else if ( NilaiAkhir >= 60) {
+                        Huruf = "C+";
+                    } else if ( NilaiAkhir >= 55) {
+                        Huruf = "C";
+                    } else if ( NilaiAkhir >= 45) {
+                        Huruf = "D";
+                    } else {
+                        Huruf = "E";
+                    }
+                System.out.println((k+1) + ".");
+                System.out.print("NIM         : " + NIM[k]);
+                System.out.print("Nama        : " + NamaMahasiswa[k]);
+                System.out.print("Nama MK     : " + NamaMatkul[k]);
+                System.out.print("Nilai Akhir : " + NilaiAkhir );
+                System.out.print("Nilai Huruf : " + Huruf );            
+                } break;
+            case 3:
+                System.out.println("Selesaiiiii!!!");
+                System.exit(0);
+                break;
+        }
+        
+    }
+    }
+}
